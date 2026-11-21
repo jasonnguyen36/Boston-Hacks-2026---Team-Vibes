@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "name": "Coffee shop",
+    "price": 6,
+    "category": "Food",
+    "location": "Back Bay",
+    "maxPeople": 8
+  },
+  {
+    "id": 2,
+    "name": "Park walk",
+    "price": 0,
+    "category": "Outdoors",
+    "location": "Back Bay",
+    "maxPeople": 20
+  },
+  {
+    "id": 3,
+    "name": "Bookstore",
+    "price": 0,
+    "category": "Culture",
+    "location": "Back Bay",
+    "maxPeople": 8
+  },
+  {
+    "id": 4,
+    "name": "Lunch spot",
+    "price": 18,
+    "category": "Food",
+    "location": "Back Bay",
+    "maxPeople": 6
+  },
+  {
+    "id": 5,
+    "name": "Gallery visit",
+    "price": 0,
+    "category": "Culture",
+    "location": "Back Bay",
+    "maxPeople": 10
+  },
+  {
+    "id": 6,
+    "name": "Dessert shop",
+    "price": 8,
+    "category": "Food",
+    "location": "Back Bay",
+    "maxPeople": 8
+  },
+  {
+    "id": 7,
+    "name": "Pizza shop",
+    "price": 10,
+    "category": "Food",
+    "location": "North End",
+    "maxPeople": 8
+  },
+  {
+    "id": 8,
+    "name": "Historic street walk",
+    "price": 0,
+    "category": "Culture",
+    "location": "North End",
+    "maxPeople": 20
+  },
+  {
+    "id": 9,
+    "name": "Pastry shop",
+    "price": 6,
+    "category": "Food",
+    "location": "North End",
+    "maxPeople": 8
+  },
+  {
+    "id": 10,
+    "name": "Waterfront walk",
+    "price": 0,
+    "category": "Outdoors",
+    "location": "North End",
+    "maxPeople": 20
+  }
+]
