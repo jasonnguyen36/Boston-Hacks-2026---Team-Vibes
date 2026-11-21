@@ -1,15 +1,80 @@
-# Boston Unscripted backend
-Sample activities are fictional placeholders with estimated prices and group limits. Replace them with your teammate's normalized data. Budget is per person in whole dollars. Run locally only; no authentication or persistent storage.
+# Backend — Boston Unscripted
 
-## Run
-`python3 -m venv .venv` then `source .venv/bin/activate`, `python -m pip install -r requirements.txt`, `python app.py`.
+## Overview
 
-## API
-Base URL: http://127.0.0.1:5000
-- POST /api/adventures with {"budget":50,"groupSize":4,"categories":["All"],"location":"Back Bay"}. Returns adventureId, options and state.
-- POST /api/adventures/{adventureId}/complete with {"chosenId":1} (use an ID from current options). Call after finishing the chosen activity. Returns updated state and next options.
-- GET /api/adventures/{adventureId} returns current state.
-- POST /api/adventures/{adventureId}/finish returns summary including both options and choice for every completed step.
-- Options may contain 0, 1 or 2 entries. Frontend should handle all cases. Declined activities may appear again; completed ones cannot.
+The backend handles activity recommendations, user preferences, budget tracking, and adventure history. It uses Python and Flask to process frontend requests and return activity recommendations in JSON format.
 
-Run logic tests: `python3 -m unittest test_recommendations`.
+## Tech Stack
+
+- Python
+- Flask
+- Flask-CORS
+- JSON
+
+## File Descriptions
+
+| File | Purpose |
+|---|---|
+| `app.py` | Main Flask server. Receives frontend requests and returns backend responses. |
+| `recommendations.py` | Filters activities based on budget, group size, category, location, and previously visited activities. Randomly selects up to two eligible activities. |
+| `adventure.py` | Manages adventure sessions, user decisions, remaining budget, and activity history. |
+| `activities.json` | Contains temporary sample activity data for testing recommendations. |
+| `test_recommendations.py` | Contains automated tests for recommendation and adventure logic. |
+| `requirements.txt` | Lists the Python dependencies needed to run the backend. |
+| `.gitignore` | Excludes virtual environments, cache files, and other unnecessary files from GitHub. |
+
+## Running the Backend
+
+From the backend directory:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt
+python app.py
+```
+
+The server runs at `http://127.0.0.1:5000`.
+
+## API Endpoints
+
+| Method | Endpoint | Purpose |
+|---|---|---|
+| GET | `/` | Check server status |
+| POST | `/api/adventures` | Start an adventure and generate initial recommendations |
+| GET | `/api/adventures/{id}` | Retrieve current adventure information |
+| POST | `/api/adventures/{id}/complete` | Complete an activity, update the budget, and generate new recommendations |
+| POST | `/api/adventures/{id}/finish` | Return the final adventure history and spending summary |
+
+## Backend Logic
+
+1. Receive the user's budget, group size, categories, and preferred location.
+2. Filter the available activities based on these preferences.
+3. Return up to two eligible activities.
+4. Record the user's chosen activity and alternative option.
+5. Update the remaining budget and visited activities.
+6. Generate the next set of recommendations.
+7. Return the complete adventure history when the user finishes.
+
+## Testing
+
+```bash
+python -m unittest test_recommendations -v
+```
+
+## Current Status
+
+- [x] Activity filtering
+- [x] Recommendation generation
+- [x] Budget tracking
+- [x] Completed activity tracking
+- [x] Adventure history
+- [x] Flask API endpoints
+- [x] Local testing
+- [ ] Real-world activity data integration
+- [ ] Frontend integration
+- [ ] Deployment
+
+## Current Limitations
+
+The backend currently uses sample activity data from `activities.json`. Adventure sessions are stored in memory and reset when the server restarts. Real-world activity data and persistent storage can be integrated later.
